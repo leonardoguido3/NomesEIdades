@@ -15,30 +15,36 @@ namespace NomesIdades.Entidades
             var nomeMaisVelho = "";
             var idadeMaisVelho = 0;
 
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 10; i++)
             {
-                Console.Clear();
                 Console.WriteLine("==================================\n");
                 Console.WriteLine("========= NOMES E IDADES =========\n");
                 Console.WriteLine("==================================\n");
                 Console.Write("\nDigite seu nome: ");
                 var nome = Console.ReadLine();
-                if (nome == null) throw new Exception("Houve um erro na inserção do nome");
 
                 Console.Write("\nDigite sua idade: ");
                 var idade = Convert.ToInt32(Console.ReadLine());
-                if(idade <= 0) throw new Exception("Idade não pode ser menor ou igual a 0");
 
-                if (idade > idadeMaisVelho)
+                if (idade > 0)
                 {
-                    idadeMaisVelho = idade;
-                    nomeMaisVelho = nome;
-                    
-                }
-                Nomes.Add(nome);
-                Idades.Add(idade);
-            }
+                    if (idade > idadeMaisVelho)
+                    {
+                        idadeMaisVelho = idade;
+                        nomeMaisVelho = nome;
 
+                    }
+                    Nomes.Add(nome);
+                    Idades.Add(idade);
+                    Console.Clear();
+                    }
+                else
+                {
+                    Console.Clear();
+                    Console.WriteLine("\nO valor não pode ser igual ou menor a 0! Tente novamente.\n");
+                    CapturaValores();
+                }
+            }
             TratarValores(nomeMaisVelho, idadeMaisVelho);
         }
 
@@ -46,12 +52,11 @@ namespace NomesIdades.Entidades
         {
             Console.Clear();
             Console.WriteLine("============ LISTA DE NOMES================\n");
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.WriteLine(Nomes[i] + "  " + Idades[i]);
             }
-
-            Console.WriteLine("\nA pessoa mais velha é " + nomeMaisVelho + " sua idade atual é " + idadeMaisVelho);
+            Console.WriteLine($"\nA pessoa mais velha é {nomeMaisVelho}, sua idade atual é {idadeMaisVelho}");
         } 
     }
 }
