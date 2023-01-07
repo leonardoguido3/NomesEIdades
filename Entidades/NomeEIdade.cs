@@ -23,7 +23,7 @@ namespace NomesIdades.Entidades
                 Console.Write("\nDigite seu nome: ");
                 var nome = Console.ReadLine();
 
-                Console.Write("\nDigite sua idade: ");
+                Console.Write($"\n{nome}, digite sua idade: ");
                 var idade = Convert.ToInt32(Console.ReadLine());
 
                 if (idade > 0)
